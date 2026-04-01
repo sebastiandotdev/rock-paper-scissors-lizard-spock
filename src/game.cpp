@@ -119,5 +119,7 @@ Score tally_from_file(const std::string& filename) {
       ++score.p2;
     }
   }
+
+  return score;
 }
 }  // namespace rock_paper_scissors_lizard_spock
