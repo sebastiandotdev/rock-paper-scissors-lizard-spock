@@ -1,0 +1,16 @@
+# Archivo de pruebas para tally_from_file
+("piedra","tijera")
+("tijera","piedra")
+("papel","tijera")
+
+# Prueba de empate total (0 vs 0)
+# piedra vs piedra
+# spock vs spock
+
+# Prueba de formatos mixtos español/inglés
+rock lagarto
+spock tijeras
+lizard papel
+
+# Línea inválida (debe ignorarse)
+banana manzana

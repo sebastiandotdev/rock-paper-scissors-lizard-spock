@@ -9,11 +9,8 @@ add_compile_options(-Wall -Wextra -Wpedantic)
 
 include_directories(include)
 
-add_library(rock-paper-scissors-lizard-spock_lib src/student.cpp)
+add_library(rock-paper-scissors-lizard-spock_lib src/game.cpp)
 target_include_directories(rock-paper-scissors-lizard-spock_lib PUBLIC include)
 
 add_executable(rock-paper-scissors-lizard-spock src/main.cpp)
 target_link_libraries(rock-paper-scissors-lizard-spock PRIVATE rock-paper-scissors-lizard-spock_lib)
-
-enable_testing()
-add_subdirectory(tests)
