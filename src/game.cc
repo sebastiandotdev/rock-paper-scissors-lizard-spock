@@ -94,7 +94,11 @@ bool beats(Move a, Move b) noexcept {
 }
 
 Score tally_from_file(const std::string& filename) {
-  Score score;
+  return tally_from_file_full(filename).score;
+}
+
+GameResult tally_from_file_full(const std::string& filename) {
+  GameResult result;
   std::ifstream infile(filename);
 
   if (!infile.is_open()) {
@@ -102,6 +106,7 @@ Score tally_from_file(const std::string& filename) {
   }
 
   std::string line;
+
   while (std::getline(infile, line)) {
     std::istringstream iss(line);
     std::string p1_move_str, p2_move_str;
@@ -113,13 +118,19 @@ Score tally_from_file(const std::string& filename) {
 
     if (p1_move == Move::Unknown || p2_move == Move::Unknown) continue;
 
+    RoundResult round{p1_move, p2_move, 0};
+
     if (beats(p1_move, p2_move)) {
-      ++score.p1;
+      ++result.score.p1;
+      round.winner = 1;
     } else if (beats(p2_move, p1_move)) {
-      ++score.p2;
+      ++result.score.p2;
+      round.winner = 2;
     }
+
+    result.rounds.push_back(round);
   }
 
-  return score;
+  return result;
 }
 }  // namespace rock_paper_scissors_lizard_spock

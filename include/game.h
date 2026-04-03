@@ -5,6 +5,7 @@
 #include <string>
 #include <string_view>
 #include <utility>
+#include <vector>
 
 namespace rock_paper_scissors_lizard_spock {
 
@@ -36,11 +37,24 @@ struct Score {
   int p2 = 0;
 };
 
+struct RoundResult {
+  Move p1_move;
+  Move p2_move;
+  int winner;  // 0 = tie, 1 = player 1, 2 = player 2
+};
+
+struct GameResult {
+  Score score;
+  std::vector<RoundResult> rounds;
+};
+
 Move parse_move(std::string_view s) noexcept;
 
 bool beats(Move a, Move b) noexcept;
 
 Score tally_from_file(const std::string& filename);
+
+GameResult tally_from_file_full(const std::string& filename);
 
 std::string to_string(Move m);
 

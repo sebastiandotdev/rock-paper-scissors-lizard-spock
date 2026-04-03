@@ -9,8 +9,8 @@ add_compile_options(-Wall -Wextra -Wpedantic)
 
 include_directories(include)
 
-add_library(rock-paper-scissors-lizard-spock_lib src/game.cpp)
+add_library(rock-paper-scissors-lizard-spock_lib src/game.cc src/ui.cc)
 target_include_directories(rock-paper-scissors-lizard-spock_lib PUBLIC include)
 
-add_executable(rock-paper-scissors-lizard-spock src/main.cpp)
+add_executable(rock-paper-scissors-lizard-spock src/main.cc)
 target_link_libraries(rock-paper-scissors-lizard-spock PRIVATE rock-paper-scissors-lizard-spock_lib)

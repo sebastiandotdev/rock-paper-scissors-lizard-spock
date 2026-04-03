@@ -1,16 +1,29 @@
-# Archivo de pruebas para tally_from_file
-("piedra","tijera")
-("tijera","piedra")
-("papel","tijera")
+# - Rock-Paper-Scissors-Lizard-Spock — test suite
+# - Covers all 10 win conditions, a tie, both players winning,
+# - mixed formats (parenthesis, plain, Spanish, English) and an invalid line.
 
-# Prueba de empate total (0 vs 0)
-# piedra vs piedra
-# spock vs spock
+# 1. Rock beats Scissors / Rock beats Lizard
+rock scissors
+("piedra","lagarto")
 
-# Prueba de formatos mixtos español/inglés
-rock lagarto
-spock tijeras
-lizard papel
+# 2. Paper beats Rock / Paper beats Spock
+papel rock
+spock paper
 
-# Línea inválida (debe ignorarse)
+# 3. Scissors beats Paper / Scissors beats Lizard
+("scissors","paper")
+lagarto tijera
+
+# 4. Lizard beats Spock / Lizard beats Paper
+lizard spock
+("paper","lizard")
+
+# 5. Spock beats Scissors / Spock beats Rock
+spock scissors
+rock spock
+
+# 6. Tie
+piedra piedra
+
+# 7. Invalid line (should be ignored)
 banana manzana
